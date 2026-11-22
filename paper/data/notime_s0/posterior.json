@@ -1,0 +1,77 @@
+{
+  "rows": [
+    {
+      "layer": 0,
+      "log_mu__true": 0.4675669992277782,
+      "log_mu__posterior_mean": 0.5239454833326647,
+      "log_mu__posterior_sd": 0.5191650484722543,
+      "alpha__true": 0.2677852748999786,
+      "alpha__posterior_mean": 0.35690233491951595,
+      "alpha__posterior_sd": 0.08493441873805707,
+      "log_beta__true": 0.01106980032634075,
+      "log_beta__posterior_mean": 0.013339355498291794,
+      "log_beta__posterior_sd": 0.06329090245223024
+    },
+    {
+      "layer": 1,
+      "log_mu__true": 0.8249894255575955,
+      "log_mu__posterior_mean": 0.9408642004190942,
+      "log_mu__posterior_sd": 0.7416020513544304,
+      "alpha__true": 0.7442436684109827,
+      "alpha__posterior_mean": 0.9096047949871027,
+      "alpha__posterior_sd": 0.760785064865022,
+      "log_beta__true": 0.4998751522806285,
+      "log_beta__posterior_mean": 0.8000082854936188,
+      "log_beta__posterior_sd": 0.7881648362959688
+    },
+    {
+      "layer": 2,
+      "log_mu__true": 0.8458808722376264,
+      "log_mu__posterior_mean": 0.9649296424063107,
+      "log_mu__posterior_sd": 0.8118940707094756,
+      "alpha__true": 0.7640435042052339,
+      "alpha__posterior_mean": 0.9376090121052733,
+      "alpha__posterior_sd": 0.7737018620269868,
+      "log_beta__true": 0.5132733493614463,
+      "log_beta__posterior_mean": 0.8639145437957865,
+      "log_beta__posterior_sd": 0.8199116609184098
+    },
+    {
+      "layer": 3,
+      "log_mu__true": 0.863007488575727,
+      "log_mu__posterior_mean": 0.990827706440377,
+      "log_mu__posterior_sd": 0.9116296380914556,
+      "alpha__true": 0.7909111537755309,
+      "alpha__posterior_mean": 0.9825065479875703,
+      "alpha__posterior_sd": 0.9024544624554605,
+      "log_beta__true": 0.5677854485803586,
+      "log_beta__posterior_mean": 0.9434626514961395,
+      "log_beta__posterior_sd": 0.8954072465338377
+    },
+    {
+      "layer": 4,
+      "log_mu__true": 0.8653410839957136,
+      "log_mu__posterior_mean": 0.993813018666523,
+      "log_mu__posterior_sd": 0.9342244425063608,
+      "alpha__true": 0.80014111439745,
+      "alpha__posterior_mean": 0.989825881225992,
+      "alpha__posterior_sd": 0.9227536359145624,
+      "log_beta__true": 0.5891337011057924,
+      "log_beta__posterior_mean": 0.9771829442616302,
+      "log_beta__posterior_sd": 0.9332260432009621
+    }
+  ],
+  "ceiling": {
+    "log_mu": 0.8807816404635684,
+    "alpha": 0.8222149745234026,
+    "log_beta": 0.6328725976958662
+  },
+  "params": [
+    "log_mu",
+    "alpha",
+    "log_beta"
+  ],
+  "K": 20000,
+  "median_ess": 776.8398054828338,
+  "min_ess_median_by_seq": 453.31835116579396
+}

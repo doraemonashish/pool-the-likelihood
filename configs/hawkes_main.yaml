@@ -1,0 +1,82 @@
+# In-context Hawkes estimation - all runs (round 2 onwards). About 45-90 min of training per run on a T4.
+# Same model size as the pilot (which already reached a 0.056 gap fraction), longer context, two seeds,
+# and two ablations that test the mechanism:
+#   nonull: no null attention slot (the pilot never used it; does removing it change anything?)
+#   notime: no time-rotary embeddings, so attention cannot depend on time gaps directly; the model still
+#           sees the log interval and log elapsed time as inputs. If it matches the full model, kernel-shaped
+#           attention is not needed at all.
+run_name: hawkes_main
+out_root: outputs
+seed: 0
+data:
+  n_events: 160
+  batch_size: 256
+  n_bins: 48
+  params: {mu: [0.2, 2.0], alpha: [0.0, 0.9], beta: [0.5, 10.0]}
+model:
+  d_model: 128
+  n_layers: 4
+  n_heads: 4
+  d_mlp: 512
+  null_attn: true
+  time_freqs: [0.02, 50.0]
+train:
+  steps: 15000
+  lr: 1.0e-3
+  warmup: 500
+  weight_decay: 0.01
+  ckpt_every: 1000
+  log_every: 500
+  eval_every: 5000
+  snapshot_every: 5000
+  data_workers: 0
+runs:
+  - {name: null_s0, seed: 0}
+  - {name: null_s1, seed: 1}
+  - {name: nonull_s0, seed: 0, model: {null_attn: false}}
+  - {name: notime_s0, seed: 0, model: {pos: none}}
+  # round 4: a third seed, and long-memory (power-law) kernels like those estimated for real order flow.
+  # Power-law simulation is slower, so it uses CPU workers; transplant and Bayes baselines are exponential-only.
+  - {name: null_s2, seed: 2}
+  - name: powerlaw_s0
+    seed: 0
+    data:
+      kernel: powerlaw
+      params: {mu: [0.2, 2.0], alpha: [0.0, 0.9], c: [0.1, 2.0], gamma: [1.5, 3.0]}
+    train: {data_workers: 3}
+  # round 5: two more power-law seeds (two workers each, as both train at once)
+  - name: powerlaw_s1
+    seed: 1
+    data:
+      kernel: powerlaw
+      params: {mu: [0.2, 2.0], alpha: [0.0, 0.9], c: [0.1, 2.0], gamma: [1.5, 3.0]}
+    train: {data_workers: 2}
+  - name: powerlaw_s2
+    seed: 2
+    data:
+      kernel: powerlaw
+      params: {mu: [0.2, 2.0], alpha: [0.0, 0.9], c: [0.1, 2.0], gamma: [1.5, 3.0]}
+    train: {data_workers: 2}
+eval:
+  n_seqs: 6000
+probe:
+  n_seqs: 400
+  query_from: 48
+mech:
+  n_seqs: 500
+  windows: [4, 16]
+baseline:             # Bayes-optimal and maximum-likelihood forecasters (mechlab/hawkes/baselines.py)
+  n_seqs: 500
+  n_seqs_powerlaw: 300  # all-pairs likelihood: slower
+  n_prior: 20000
+  checkpoints: [2, 4, 8, 16, 32, 64, 128]
+posterior:            # does the residual stream hold the Bayesian posterior? (mechlab/hawkes/posterior.py)
+  n_seqs: 400
+  n_prior: 20000
+transplant:           # causal test: edit a parameter estimate, compare with the true change (mechlab/hawkes/transplant.py)
+  n_seqs: 400
+  n_fit: 400
+  scales: [1.0]
+verdict: {gap_frac: 0.3, probe_r2: 0.5, kernel_r2: 0.7, kernel_rho: 0.5, intensity_rho: 0.8, within_rho: 0.5, span_rho: 0.5,
+          transplant_corr: 0.5, transplant_slope: 0.3, bayes_gap: 0.02,
+          posterior_r2: 0.85, posterior_margin: 0.05, info_share: 0.9}   # last three set before round 5 ran

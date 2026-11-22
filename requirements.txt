@@ -1,0 +1,7 @@
+# PyTorch: install the build for your platform first (https://pytorch.org)
+torch
+numpy
+scipy
+matplotlib
+pyyaml
+pytest

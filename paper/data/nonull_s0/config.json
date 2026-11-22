@@ -1,0 +1,44 @@
+{
+  "data": {
+    "n_events": 160,
+    "batch_size": 256,
+    "n_bins": 48,
+    "params": {
+      "mu": [
+        0.2,
+        2.0
+      ],
+      "alpha": [
+        0.0,
+        0.9
+      ],
+      "beta": [
+        0.5,
+        10.0
+      ]
+    }
+  },
+  "model": {
+    "d_model": 128,
+    "n_layers": 4,
+    "n_heads": 4,
+    "d_mlp": 512,
+    "null_attn": false,
+    "time_freqs": [
+      0.02,
+      50.0
+    ]
+  },
+  "train": {
+    "steps": 15000,
+    "lr": 0.001,
+    "warmup": 500,
+    "weight_decay": 0.01,
+    "ckpt_every": 1000,
+    "log_every": 500,
+    "eval_every": 5000,
+    "snapshot_every": 5000,
+    "data_workers": 0
+  },
+  "seed": 0
+}

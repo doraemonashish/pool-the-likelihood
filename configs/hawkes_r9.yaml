@@ -1,0 +1,16 @@
+# Hawkes round 9 on the five exponential-kernel models of configs/hawkes_main.yaml (no new training).
+# Predictions (fixed before running; see docs/PREREGISTRATION.md, round 9):
+#  A1 mean-ablating the pooling heads (attention total variation from uniform < 0.25, found in round 8) raises
+#     late-context cross-entropy by >= 3x the mean rise from ablating the same number of other heads in the same
+#     blocks, and by more than any of 10 such draws
+#  A2 after ablating them, the pooled log-traces are >= 0.05 R2 less decodable at the output of their block than after
+#     ablating other heads
+#  D1 a 3-dim DAS subspace trained toward an UNRELATED posterior (sequence C, while patching from A) reaches held-out
+#     transfer <= 0.3, at the block where the right target reaches >= 0.8
+#  D2 the 3 DAS coordinates predict all three posterior means with R2 >= 0.8
+#  D3 (exploratory) the DAS subspaces found after blocks 0, 1 and 2 are aligned
+run_name: hawkes_r9
+main_config: configs/hawkes_main.yaml
+ablate: {n_seqs: 400, K: 20000, n_random: 10, query_from: 48}
+das: {n_fit: 400, n_pairs: 600, K: 20000, checkpoints: [64, 128], steps: 300, k: 3, blocks: [0, 1, 2]}
+verdict: {pool_tv: 0.25, a1_ratio: 3.0, a2_gap: 0.05, d1_wrong: 0.3, d1_right: 0.8, d2_r2: 0.8}

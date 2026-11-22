@@ -1,0 +1,14 @@
+# Hawkes round 7: three tests on the eight trained models of configs/hawkes_main.yaml (no new training).
+# Predictions (fixed before running; see docs/PREREGISTRATION.md, round 7):
+#  M1 on data from the other kernel family, KL(Bayes-own || model) < 0.5 x KL(Bayes-true || model) in >= 3/4 of models
+#  M2 the decoded branching ratio correlates more with the own-family posterior mean than with the true value
+#  I1 swapping the posterior subspace gives transfer >= 0.5 and >= 3x a random subspace (exponential models)
+#  K1 decayed counts at 7 fixed rates suffice for the posterior means (MLP R2 within 0.03 of the best residual probe)
+#  K2 replacing a block's output by a linear map of those features recovers >= 0.7 of the loss that count+time
+#     features alone cause
+run_name: hawkes_r7
+main_config: configs/hawkes_main.yaml
+misspec: {n_seqs: 200, n_fit: 300, K: 20000, checkpoints: [8, 16, 32, 64, 128]}
+interchange: {n_fit: 400, n_pairs: 300, K: 20000, checkpoints: [64, 128], layers: [1, 2]}
+bank: {n_seqs: 400, n_test: 400, K: 20000}
+verdict: {m1_ratio: 0.5, i1_transfer: 0.5, i1_ratio: 3.0, k1_tol: 0.03, k2_recovered: 0.7}

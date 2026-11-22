@@ -1,0 +1,82 @@
+{
+  "layers": {
+    "1": {
+      "posterior_m64": {
+        "kl_transplant_patched": 0.2902445251278008,
+        "kl_transplant_original": 0.2907420058760493,
+        "kl_own_patched": 0.0002975370710909308,
+        "kl_own_original": 0.0002945944743920821,
+        "kl_transplant_own": 0.29499860375767784,
+        "transfer": 0.0017110728350020477
+      },
+      "posterior_m128": {
+        "kl_transplant_patched": 0.3300168053313578,
+        "kl_transplant_original": 0.33048260440198834,
+        "kl_own_patched": 0.0003777585547818104,
+        "kl_own_original": 0.00037467369693701386,
+        "kl_transplant_own": 0.3430649668679683,
+        "transfer": 0.001409451100984338
+      },
+      "random_m64": {
+        "kl_transplant_patched": 0.2816475202336075,
+        "kl_transplant_original": 0.2907420058760493,
+        "kl_own_patched": 0.00045705231984280556,
+        "kl_own_original": 0.0002945944743920821,
+        "kl_transplant_own": 0.29499860375767784,
+        "transfer": 0.031280260363612644
+      },
+      "random_m128": {
+        "kl_transplant_patched": 0.3209658316022674,
+        "kl_transplant_original": 0.33048260440198834,
+        "kl_own_patched": 0.0005900817943422373,
+        "kl_own_original": 0.00037467369693701386,
+        "kl_transplant_own": 0.3430649668679683,
+        "transfer": 0.028796592234988205
+      },
+      "transfer_posterior": 0.0015602619679931928,
+      "transfer_random": 0.030038426299300425
+    },
+    "2": {
+      "posterior_m64": {
+        "kl_transplant_patched": 0.2883662909513907,
+        "kl_transplant_original": 0.2907420058760493,
+        "kl_own_patched": 0.00029218869993683487,
+        "kl_own_original": 0.0002945944743920821,
+        "kl_transplant_own": 0.29499860375767784,
+        "transfer": 0.008171213229062668
+      },
+      "posterior_m128": {
+        "kl_transplant_patched": 0.3277745728555515,
+        "kl_transplant_original": 0.33048260440198834,
+        "kl_own_patched": 0.00037545304851816977,
+        "kl_own_original": 0.00037467369693701386,
+        "kl_transplant_own": 0.3430649668679683,
+        "transfer": 0.008194172735164207
+      },
+      "random_m64": {
+        "kl_transplant_patched": 0.276262928704198,
+        "kl_transplant_original": 0.2907420058760493,
+        "kl_own_patched": 0.0005524828284205867,
+        "kl_own_original": 0.0002945944743920821,
+        "kl_transplant_own": 0.29499860375767784,
+        "transfer": 0.049800430894819225
+      },
+      "random_m128": {
+        "kl_transplant_patched": 0.31434079971717616,
+        "kl_transplant_original": 0.33048260440198834,
+        "kl_own_patched": 0.000711347133184112,
+        "kl_own_original": 0.00037467369693701386,
+        "kl_transplant_own": 0.3430649668679683,
+        "transfer": 0.04884312962257409
+      },
+      "transfer_posterior": 0.008182692982113438,
+      "transfer_random": 0.04932178025869666
+    }
+  },
+  "checkpoints": [
+    64,
+    128
+  ],
+  "dim": 3,
+  "best_layer": 2
+}

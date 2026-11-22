@@ -1,0 +1,21 @@
+# Hawkes round 8 on the eight trained models of configs/hawkes_main.yaml (no new training).
+# Predictions (fixed before running; see docs/PREREGISTRATION.md, round 8):
+#  M1  for every misspecified model: KL(true) - KL(own) > 0 and KL(own)/KL(true) < 0.5 at the 95% level (bootstrap
+#      over sequences; same sequences and Bayes references as round 7)
+#  P1  bank + pooled log-traces (12 rates x 8 offsets) predict the posterior means within 0.05 R2 of the best residual
+#      probe, for all three parameters (replicates a CPU check: 0.988 / 0.987 / 0.941)
+#  P2  pooled traces are linearly decodable from the residual stream (mean R2 >= 0.8 at the best layer), with a gain of
+#      >= 0.1 after blocks 1+ over block 0
+#  P3  (exploratory) heads in blocks >= 1 with near-uniform attention over past events (total variation < 0.25)
+#  P4  replacing the output of block 1 or later with a linear map of [bank, pooled] recovers >= 0.1 more of the
+#      count+time damage than [bank] alone
+#  I2  at some block, an 8-dim DAS subspace reaches held-out transfer >= 0.5 and >= 3x a random 8-dim subspace
+#  I3  where I2 holds, the DAS subspace contains >= 30% of the probe's 3-dim posterior subspace
+run_name: hawkes_r8
+main_config: configs/hawkes_main.yaml
+r7_run_name: hawkes_r7
+misspec_ci: {n_seqs: 200, K: 20000, checkpoints: [8, 16, 32, 64, 128], n_boot: 2000}
+pooled: {n_seqs: 400, n_test: 400, K: 20000, query_from: 48, mlp_epochs: 200}
+das: {n_fit: 400, n_pairs: 600, K: 20000, checkpoints: [64, 128], ks: [3, 8], steps: 300}
+verdict: {m1_ratio: 0.5, p1_tol: 0.05, p2_r2: 0.8, p2_gain: 0.1, p3_tv: 0.25, p4_gain: 0.1, i2_transfer: 0.5, i2_ratio: 3.0,
+          i3_overlap: 0.3}

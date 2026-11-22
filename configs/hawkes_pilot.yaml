@@ -1,0 +1,54 @@
+# In-context Hawkes estimation - pilot (about 20-30 min on a Kaggle T4).
+# Question: does a transformer that forecasts self-exciting event streams compute the Hawkes
+# excitation kernel in its attention, and does a head adapt its decay to each sequence?
+run_name: hawkes_pilot
+out_root: outputs
+seed: 0
+data:
+  n_events: 128
+  batch_size: 256
+  n_bins: 48            # histogram over the next inter-event time (log-spaced, 1e-3 to 1e2)
+  params:
+    mu: [0.2, 2.0]      # baseline rate (log-uniform)
+    alpha: [0.0, 0.9]   # branching ratio (uniform); 0.9-0.98 is held out as a near-critical test
+    beta: [0.5, 10.0]   # kernel decay rate (log-uniform)
+model:
+  d_model: 128
+  n_layers: 4
+  n_heads: 4
+  d_mlp: 512
+  null_attn: true       # lets a head put weight on "nothing", so it can compute un-normalised sums
+  time_freqs: [0.02, 50.0]   # range of time-rotary angular frequencies
+train:
+  steps: 8000
+  lr: 1.0e-3
+  warmup: 400
+  weight_decay: 0.01
+  ckpt_every: 1000
+  log_every: 250
+  eval_every: 2000
+  data_workers: 0       # simulation is vectorised and fast; no workers needed
+runs:
+  - name: base
+eval:
+  n_seqs: 4000
+probe:
+  n_seqs: 300
+  query_from: 32
+mech:                   # what the model does instead of kernel heads (mechlab/hawkes/mechanism.py)
+  n_seqs: 400
+  windows: [4, 16]
+transplant:
+  n_seqs: 400
+  n_fit: 400
+  scales: [1.0]
+verdict:
+  gap_frac: 0.3
+  probe_r2: 0.5
+  kernel_r2: 0.7
+  kernel_rho: 0.5
+  intensity_rho: 0.8   # M1: implied vs true intensity
+  within_rho: 0.5
+  span_rho: 0.5        # M2: |corr(attention span, beta)| for an adaptive head
+  transplant_corr: 0.5 # M4: edit vs true change
+  transplant_slope: 0.3

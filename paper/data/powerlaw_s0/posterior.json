@@ -1,0 +1,94 @@
+{
+  "rows": [
+    {
+      "layer": 0,
+      "log_mu__true": 0.45819101266898254,
+      "log_mu__posterior_mean": 0.5626888628118341,
+      "log_mu__posterior_sd": 0.5497075966918339,
+      "alpha__true": 0.25064239737778593,
+      "alpha__posterior_mean": 0.35935722883830856,
+      "alpha__posterior_sd": 0.05361115316957554,
+      "log_beta__true": -0.003696140562516881,
+      "log_beta__posterior_mean": 0.002213993033292616,
+      "log_beta__posterior_sd": 0.035569118351440276,
+      "gamma__true": -0.0022304479384278597,
+      "gamma__posterior_mean": 0.02966466931364853,
+      "gamma__posterior_sd": 0.02998483527819329
+    },
+    {
+      "layer": 1,
+      "log_mu__true": 0.6378247907585721,
+      "log_mu__posterior_mean": 0.7628087112269127,
+      "log_mu__posterior_sd": 0.5852091028745234,
+      "alpha__true": 0.4886200270007396,
+      "alpha__posterior_mean": 0.673666534594155,
+      "alpha__posterior_sd": 0.5333126422321958,
+      "log_beta__true": 0.15026556430943705,
+      "log_beta__posterior_mean": 0.3641150601453209,
+      "log_beta__posterior_sd": 0.4367941573049947,
+      "gamma__true": 0.023140501607344155,
+      "gamma__posterior_mean": 0.42353975482197725,
+      "gamma__posterior_sd": 0.3963296462157416
+    },
+    {
+      "layer": 2,
+      "log_mu__true": 0.8222666367839485,
+      "log_mu__posterior_mean": 0.9775533250356879,
+      "log_mu__posterior_sd": 0.8779412362349223,
+      "alpha__true": 0.7158587549670877,
+      "alpha__posterior_mean": 0.9716079207248257,
+      "alpha__posterior_sd": 0.8533079666488566,
+      "log_beta__true": 0.36405637536837154,
+      "log_beta__posterior_mean": 0.9467618345011279,
+      "log_beta__posterior_sd": 0.8952976656663216,
+      "gamma__true": 0.044492484147185096,
+      "gamma__posterior_mean": 0.8501587528958441,
+      "gamma__posterior_sd": 0.8387562643523909
+    },
+    {
+      "layer": 3,
+      "log_mu__true": 0.8333788410429981,
+      "log_mu__posterior_mean": 0.9911324806306469,
+      "log_mu__posterior_sd": 0.9320117279639244,
+      "alpha__true": 0.7242413791189382,
+      "alpha__posterior_mean": 0.9910509026365529,
+      "alpha__posterior_sd": 0.927193710379719,
+      "log_beta__true": 0.37038287622233934,
+      "log_beta__posterior_mean": 0.9730912335847597,
+      "log_beta__posterior_sd": 0.9410665656639402,
+      "gamma__true": 0.0352432359193986,
+      "gamma__posterior_mean": 0.8927607694992992,
+      "gamma__posterior_sd": 0.8654511275195842
+    },
+    {
+      "layer": 4,
+      "log_mu__true": 0.8345343061236117,
+      "log_mu__posterior_mean": 0.9924709609631172,
+      "log_mu__posterior_sd": 0.9304537755548156,
+      "alpha__true": 0.7232850896366878,
+      "alpha__posterior_mean": 0.9914132738993469,
+      "alpha__posterior_sd": 0.9237753695143153,
+      "log_beta__true": 0.37208182986124183,
+      "log_beta__posterior_mean": 0.9723746748297122,
+      "log_beta__posterior_sd": 0.9412804939441443,
+      "gamma__true": 0.021068783160866023,
+      "gamma__posterior_mean": 0.8938951796806668,
+      "gamma__posterior_sd": 0.8643900772234754
+    }
+  ],
+  "ceiling": {
+    "log_mu": 0.8579265528309971,
+    "alpha": 0.7515300596166606,
+    "log_beta": 0.4166656763370815,
+    "gamma": 0.09653369852459781
+  },
+  "params": [
+    "log_mu",
+    "alpha",
+    "log_beta",
+    "gamma"
+  ],
+  "K": 20000,
+  "median_ess": 986.9642907478401,
+  "min_ess_median_by_seq": 542.8769469744041
+}

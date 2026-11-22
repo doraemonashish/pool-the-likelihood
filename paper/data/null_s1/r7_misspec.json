@@ -1,0 +1,98 @@
+{
+  "own_family": "exp",
+  "probe_layer": 4,
+  "data": {
+    "exp": {
+      "misspecified": false,
+      "rows": [
+        {
+          "context": 8,
+          "kl_own": 0.0003819872030931467,
+          "kl_true": 0.0003819872030931467,
+          "kl_own_true": 0.0
+        },
+        {
+          "context": 16,
+          "kl_own": 0.0003772149562024734,
+          "kl_true": 0.0003772149562024734,
+          "kl_own_true": 0.0
+        },
+        {
+          "context": 32,
+          "kl_own": 0.0003450483965407452,
+          "kl_true": 0.0003450483965407452,
+          "kl_own_true": 0.0
+        },
+        {
+          "context": 64,
+          "kl_own": 0.00031946249108933593,
+          "kl_true": 0.00031946249108933593,
+          "kl_own_true": 0.0
+        },
+        {
+          "context": 128,
+          "kl_own": 0.0004002842541695509,
+          "kl_true": 0.0004002842541695509,
+          "kl_own_true": 0.0
+        }
+      ],
+      "kl_own": 0.00036479946021905044,
+      "kl_true": 0.00036479946021905044,
+      "ce_model": 3.1641581058502197,
+      "ce_bayes_own": 3.164548275867401,
+      "ce_bayes_true": 3.164548275867401,
+      "ce_oracle": 3.132285422994788,
+      "alpha_r2_decoded_vs_own_posterior": 0.9899838181883072,
+      "alpha_r2_decoded_vs_true": 0.5644437374025778,
+      "alpha_r2_own_posterior_vs_true": 0.569011768145059,
+      "alpha_corr_decoded_own": 0.9950087253505624,
+      "alpha_corr_decoded_true": 0.7513460999995454
+    },
+    "powerlaw": {
+      "misspecified": true,
+      "rows": [
+        {
+          "context": 8,
+          "kl_own": 0.0003522384738945057,
+          "kl_true": 0.003795063232236583,
+          "kl_own_true": 0.002763939260345255
+        },
+        {
+          "context": 16,
+          "kl_own": 0.00038654549203951115,
+          "kl_true": 0.003556120716569324,
+          "kl_own_true": 0.002831035997694214
+        },
+        {
+          "context": 32,
+          "kl_own": 0.0003641346274646684,
+          "kl_true": 0.003427866457664692,
+          "kl_own_true": 0.0030587533720412828
+        },
+        {
+          "context": 64,
+          "kl_own": 0.0004385293662900556,
+          "kl_true": 0.0031919508673973096,
+          "kl_own_true": 0.0030561593010142883
+        },
+        {
+          "context": 128,
+          "kl_own": 0.00044404493703389,
+          "kl_true": 0.0033102981083859926,
+          "kl_own_true": 0.0032994335971217293
+        }
+      ],
+      "kl_own": 0.00039709857934452615,
+      "kl_true": 0.0034562598764507806,
+      "ce_model": 3.1804165840148926,
+      "ce_bayes_own": 3.181398055666394,
+      "ce_bayes_true": 3.1821566778765678,
+      "ce_oracle": 3.1609143811460516,
+      "alpha_r2_decoded_vs_own_posterior": 0.990202476958371,
+      "alpha_r2_decoded_vs_true": 0.5130376167521984,
+      "alpha_r2_own_posterior_vs_true": 0.5142447228184902,
+      "alpha_corr_decoded_own": 0.9951075052909515,
+      "alpha_corr_decoded_true": 0.7475702425823492
+    }
+  }
+}
